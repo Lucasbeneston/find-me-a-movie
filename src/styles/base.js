@@ -5,6 +5,10 @@ const base = `
   html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    
+    @media ${device.laptop} {
+      font-size: 72.5%;
+    }
   }
 
   body {
@@ -12,11 +16,6 @@ const base = `
     font-family: Helvetica, sans-serif;
     color: ${color.anthraciteGray};
     background-color: ${color.offWhite};
-
-    @media ${device.tablet} {
-      color: ${color.offWhite};
-      background-color: ${color.anthraciteGray};
-    }
   }`;
 
 export default base;
