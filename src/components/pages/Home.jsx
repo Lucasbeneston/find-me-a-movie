@@ -32,7 +32,7 @@ const BackdropPath = styled.img`
 const PosterPathContainer = styled.div`
   width: ${(props) => (props.active ? "45vw" : "55vw")};
   height: ${(props) => (props.active ? "65vw" : "80vw")};
-  background-color: ${color.doveGray};
+  background-color: ${color.blueWhale};
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -55,11 +55,42 @@ const FilmInformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px 5%;
+  padding: 5px 10%;
 `;
+const IntroductionTitle = styled.h2`
+  font-size: 1.8rem;
+  text-align: center;
+`;
+
 const FilmTitle = styled.h2`
   font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
 `;
+
+const FilmGenreContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+const FilmGenre = styled.h3`
+  font-size: 1.4rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  color: ${color.doveGray};
+  border: solid 1px ${color.doveGray};
+`;
+const FilmVoteAverage = styled.h4`
+  font-size: 1.8rem;
+`;
+const FilmDescription = styled.p`
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 15px 0;
+`;
+
 const SearchButton = styled.button`
   position: fixed;
   width: 50%;
@@ -79,6 +110,19 @@ const SearchButton = styled.button`
 
 export default function Home() {
   const [startRandom, setStartRandom] = useState(false);
+  const [filmInformations, setFilmInformations] = useState({
+    posterPath:
+      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zDyT3gIeae39UgL9P6jL5Zc3zyt.jpg",
+    backdropPath:
+      "https://cdn-www.konbini.com/fr/images/files/2019/10/will-joker-be-coming-to-netflix-.jpg?webp=",
+    description:
+      "Dans les années 1980, à Gotham City, Arthur Fleck, un humoriste de stand-up raté, bascule dans la folie et devient le Joker.",
+    title: "Joker",
+    genres: ["Crime", "Thriller", "Drame"],
+    voteAverage: 8.2,
+  });
+
+  console.log(setFilmInformations);
 
   const handleStart = () => {
     if (!startRandom) setStartRandom(true);
@@ -88,21 +132,45 @@ export default function Home() {
     <Section>
       <BackdropPathContainer active={startRandom}>
         <FadeEffectBackground />
-        <BackdropPath
-          src="https://cdn-www.konbini.com/fr/images/files/2019/10/will-joker-be-coming-to-netflix-.jpg?webp="
-          alt="backdrop path reference"
-        />
-        <PosterPathContainer active={startRandom}>
-          <PosterPath
-            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zDyT3gIeae39UgL9P6jL5Zc3zyt.jpg"
-            alt="poster path reference"
+        {!startRandom ? null : (
+          <BackdropPath
+            src={filmInformations.backdropPath}
+            alt={`${filmInformations.title} movie illustration`}
           />
+        )}
+
+        <PosterPathContainer active={startRandom}>
+          {!startRandom ? null : (
+            <PosterPath
+              src={filmInformations.posterPath}
+              alt={`${filmInformations.title} movie poster illustration`}
+            />
+          )}
         </PosterPathContainer>
       </BackdropPathContainer>
       <FilmInformationsContainer>
-        <FilmTitle>Titre du film</FilmTitle>
+        {!startRandom ? (
+          <IntroductionTitle>
+            "Find me a movie" is the easiest way to find a movie when you don't
+            know what to watch.
+          </IntroductionTitle>
+        ) : (
+          <>
+            <FilmTitle>{filmInformations.title}</FilmTitle>
+            <FilmGenreContainer>
+              {filmInformations.genres.map((genre) => (
+                <FilmGenre>{genre}</FilmGenre>
+              ))}
+            </FilmGenreContainer>
+
+            <FilmVoteAverage>{filmInformations.voteAverage}</FilmVoteAverage>
+            <FilmDescription>{filmInformations.description}</FilmDescription>
+          </>
+        )}
       </FilmInformationsContainer>
-      <SearchButton onClick={handleStart}>Random film</SearchButton>
+      <SearchButton onClick={handleStart}>
+        {!startRandom ? "Start random" : "New random"}
+      </SearchButton>
     </Section>
   );
 }
