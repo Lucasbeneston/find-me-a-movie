@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// Style
 const IntroductionTitle = styled.h2`
   font-size: 1.8rem;
   text-align: center;

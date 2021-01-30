@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import color from "../../styles/variables";
 
-// Search Button
+// Style
 const Button = styled.button`
   position: fixed;
   width: 50%;
@@ -25,6 +25,7 @@ export default function SearchButton({ onClickEvent, description }) {
   return <Button onClick={onClickEvent}>{description}</Button>;
 }
 
+// PropTypes
 SearchButton.propTypes = {
   onClickEvent: PropTypes.func.isRequired,
   description: PropTypes.string.isRequired,
