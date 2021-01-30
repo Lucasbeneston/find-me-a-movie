@@ -6,6 +6,8 @@ const Section = styled.section`
   width: 100%;
   min-height: calc(100vh - 30px);
 `;
+
+// Backdrop Path Container
 const BackdropPathContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.active ? "50vh" : "70vh")};
@@ -29,6 +31,8 @@ const BackdropPath = styled.img`
   height: 100%;
   object-fit: cover;
 `;
+
+// Poster Path Container
 const PosterPathContainer = styled.div`
   width: ${(props) => (props.active ? "45vw" : "55vw")};
   height: ${(props) => (props.active ? "65vw" : "80vw")};
@@ -48,6 +52,8 @@ const PosterPath = styled.img`
   width: 100%;
   object-fit: cover;
 `;
+
+// Film Informations Container
 const FilmInformationsContainer = styled.div`
   width: 100%;
   min-height: calc(30vh - 30px); // 30px = Footer height
@@ -62,12 +68,12 @@ const IntroductionTitle = styled.h2`
   text-align: center;
 `;
 
+// Film Informations
 const FilmTitle = styled.h2`
   font-size: 2rem;
   text-align: center;
   font-weight: bold;
 `;
-
 const FilmGenreContainer = styled.div`
   display: flex;
   width: 100%;
@@ -82,8 +88,29 @@ const FilmGenre = styled.h3`
   color: ${color.doveGray};
   border: solid 1px ${color.doveGray};
 `;
+const FilmVoteAverageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const FilmVoteAverage = styled.h4`
   font-size: 1.8rem;
+  margin-right: 10px;
+`;
+const ProgressBarContainer = styled.div`
+  width: 100px;
+  height: 10px;
+  position: relative;
+  background-color: ${color.blueWhale};
+  border-radius: 5px;
+`;
+const ProgressBarContainerValue = styled.div`
+  position: absolute;
+  left: 0;
+  width: 82px;
+  height: 10px;
+  background-color: ${color.ceruleanBlue};
+  border-radius: 5px;
 `;
 const FilmDescription = styled.p`
   font-size: 1.6rem;
@@ -91,6 +118,7 @@ const FilmDescription = styled.p`
   margin: 15px 0;
 `;
 
+// Search Button
 const SearchButton = styled.button`
   position: fixed;
   width: 50%;
@@ -159,11 +187,15 @@ export default function Home() {
             <FilmTitle>{filmInformations.title}</FilmTitle>
             <FilmGenreContainer>
               {filmInformations.genres.map((genre) => (
-                <FilmGenre>{genre}</FilmGenre>
+                <FilmGenre key={genre}>{genre}</FilmGenre>
               ))}
             </FilmGenreContainer>
-
-            <FilmVoteAverage>{filmInformations.voteAverage}</FilmVoteAverage>
+            <FilmVoteAverageContainer>
+              <FilmVoteAverage>{filmInformations.voteAverage}</FilmVoteAverage>
+              <ProgressBarContainer>
+                <ProgressBarContainerValue />
+              </ProgressBarContainer>
+            </FilmVoteAverageContainer>
             <FilmDescription>{filmInformations.description}</FilmDescription>
           </>
         )}
