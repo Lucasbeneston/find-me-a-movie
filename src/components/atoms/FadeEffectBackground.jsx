@@ -4,7 +4,7 @@ import color from "../../styles/variables";
 
 // Style
 const FadeEffect = styled.div`
-  height: 100%;
+  height: calc(100% + 2px);
   width: 100%;
   background: linear-gradient(
     rgba(0, 0, 0, 0.5),
@@ -13,7 +13,7 @@ const FadeEffect = styled.div`
     ${color.offWhite}
   );
   position: absolute;
-  bottom: -1px;
+  bottom: -2px;
 `;
 
 export default function FadeEffectBackground() {

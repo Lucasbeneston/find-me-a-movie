@@ -44,10 +44,10 @@ export default function BackdropPathContainer({
 }) {
   return (
     <Container active={startRandom}>
-      <FadeEffectBackground />
       {!startRandom ? null : (
         <BackdropPath srcBackdropPath={srcBackdropPath} srcTitle={srcTitle} />
       )}
+      <FadeEffectBackground />
       <PosterPathContainer
         startRandom={startRandom}
         srcPosterPath={srcPosterPath}

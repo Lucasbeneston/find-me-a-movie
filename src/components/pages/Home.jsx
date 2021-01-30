@@ -19,7 +19,6 @@ export default function Home() {
       "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zDyT3gIeae39UgL9P6jL5Zc3zyt.jpg",
     backdropPath:
       "https://cdn-www.konbini.com/fr/images/files/2019/10/will-joker-be-coming-to-netflix-.jpg?webp=",
-
     title: "Joker",
     genres: ["Crime", "Thriller", "Drame"],
     voteAverage: 8.2,
@@ -36,6 +35,7 @@ export default function Home() {
     description,
   } = filmInformations;
 
+  // /!\ Temporary to cancel an eslint rule /!\
   console.log(setFilmInformations);
 
   const handleStart = () => {
@@ -59,7 +59,7 @@ export default function Home() {
       />
       <SearchButton
         onClickEvent={handleStart}
-        description={!startRandom ? "Start random" : "New random"}
+        title={!startRandom ? "Start random" : "New random"}
       />
     </Section>
   );

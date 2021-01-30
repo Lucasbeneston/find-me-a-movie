@@ -1,9 +1,20 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 
 // Style
+
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`;
+
 const Image = styled.img`
+  animation: ${fadeIn} 0.5s ease-out;
   height: 100%;
   object-fit: cover;
 `;

@@ -21,12 +21,12 @@ const Button = styled.button`
   text-transform: uppercase;
 `;
 
-export default function SearchButton({ onClickEvent, description }) {
-  return <Button onClick={onClickEvent}>{description}</Button>;
+export default function SearchButton({ onClickEvent, title }) {
+  return <Button onClick={onClickEvent}>{title}</Button>;
 }
 
 // PropTypes
 SearchButton.propTypes = {
   onClickEvent: PropTypes.func.isRequired,
-  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };

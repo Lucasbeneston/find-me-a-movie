@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Heart from "../atoms/SVGR/Heart";
+import color from "../../styles/variables";
 
 const FooterSection = styled.footer`
   width: 100%;
@@ -11,12 +13,18 @@ const FooterSection = styled.footer`
 
 const Copyright = styled.p`
   font-size: 1rem;
+  & svg {
+    color: ${color.ceruleanBlue};
+    height: 0.75rem;
+  }
 `;
 
 export default function Footer() {
   return (
     <FooterSection>
-      <Copyright>Made with love by Lucas BENESTON</Copyright>
+      <Copyright>
+        Made with <Heart /> by Lucas BENESTON
+      </Copyright>
     </FooterSection>
   );
 }
