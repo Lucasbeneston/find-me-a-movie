@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import styled, { keyframes, css } from "styled-components";
 import color from "../../styles/variables";
 
+// Components
+import TitleBeforeRandom from "../atoms/TitleBeforeRandom";
+import BackdropPath from "../atoms/BackdropPath";
+import PosterPath from "../atoms/PosterPath";
+import SearchButton from "../atoms/SearchButton";
+
+// Styles
 const Section = styled.section`
   width: 100%;
   min-height: calc(100vh - 30px);
@@ -22,11 +29,9 @@ const colorVariation = keyframes`
   color: ${color.blueWhale};
 }
 `;
-
 const animation = css`
   animation: ${colorVariation} 50s infinite linear;
 `;
-
 const BackdropPathContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.active ? "50vh" : "70vh")};
@@ -48,10 +53,6 @@ const FadeEffectBackground = styled.div`
   position: absolute;
   bottom: -1px;
 `;
-const BackdropPath = styled.img`
-  height: 100%;
-  object-fit: cover;
-`;
 
 // Poster Path Container
 const PosterPathContainer = styled.div`
@@ -68,14 +69,9 @@ const PosterPathContainer = styled.div`
   justify-content: center;
   transition: all 0.5s ease-out;
 `;
-const PosterPath = styled.img`
-  border-radius: 15px;
-  width: 100%;
-  object-fit: cover;
-`;
 
 // Film Informations Container
-const FilmInformationsContainer = styled.div`
+const InformationsContainer = styled.div`
   width: 100%;
   min-height: calc(30vh - 30px); // 30px = Footer height
   position: relative;
@@ -83,10 +79,6 @@ const FilmInformationsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5px 10%;
-`;
-const IntroductionTitle = styled.h2`
-  font-size: 1.8rem;
-  text-align: center;
 `;
 
 // Film Informations
@@ -141,24 +133,6 @@ const FilmDescription = styled.p`
   margin: 15px 0;
 `;
 
-// Search Button
-const SearchButton = styled.button`
-  position: fixed;
-  width: 50%;
-  height: 50px;
-  bottom: 30px; // Footer height
-  left: 50%;
-  margin-bottom: 10px;
-  transform: translate(-50%);
-  background-color: ${color.blueWhale};
-  color: ${color.offWhite};
-  border: none;
-  border-radius: 25px;
-  outline: none;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-`;
-
 export default function Home() {
   const [startRandom, setStartRandom] = useState(false);
   const [filmInformations, setFilmInformations] = useState({
@@ -185,26 +159,23 @@ export default function Home() {
         <FadeEffectBackground />
         {!startRandom ? null : (
           <BackdropPath
-            src={filmInformations.backdropPath}
-            alt={`${filmInformations.title} movie illustration`}
+            srcBackdropPath={filmInformations.backdropPath}
+            srcTitle={filmInformations.title}
           />
         )}
 
         <PosterPathContainer active={startRandom}>
           {!startRandom ? null : (
             <PosterPath
-              src={filmInformations.posterPath}
-              alt={`${filmInformations.title} movie poster illustration`}
+              srcPosterPath={filmInformations.posterPath}
+              srcTitle={filmInformations.title}
             />
           )}
         </PosterPathContainer>
       </BackdropPathContainer>
-      <FilmInformationsContainer>
+      <InformationsContainer>
         {!startRandom ? (
-          <IntroductionTitle>
-            "Find me a movie" is the easiest way to find a movie when you don't
-            know what to watch.
-          </IntroductionTitle>
+          <TitleBeforeRandom />
         ) : (
           <>
             <FilmTitle>{filmInformations.title}</FilmTitle>
@@ -224,10 +195,11 @@ export default function Home() {
             <FilmDescription>{filmInformations.description}</FilmDescription>
           </>
         )}
-      </FilmInformationsContainer>
-      <SearchButton onClick={handleStart}>
-        {!startRandom ? "Start random" : "New random"}
-      </SearchButton>
+      </InformationsContainer>
+      <SearchButton
+        onClickEvent={handleStart}
+        description={!startRandom ? "Start random" : "New random"}
+      />
     </Section>
   );
 }
