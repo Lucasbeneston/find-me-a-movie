@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import color from "../../styles/variables";
 
 const Section = styled.section`
@@ -8,10 +8,31 @@ const Section = styled.section`
 `;
 
 // Backdrop Path Container
+const colorVariation = keyframes`
+0% {
+  color: ${color.blueWhale};
+}
+35% {
+  color: ${color.ceruleanBlue};
+}
+65% {
+  color: ${color.javaGreen};
+}
+100% {
+  color: ${color.blueWhale};
+}
+`;
+
+const animation = css`
+  animation: ${colorVariation} 50s infinite linear;
+`;
+
 const BackdropPathContainer = styled.div`
   width: 100%;
   height: ${(props) => (props.active ? "50vh" : "70vh")};
-  background-color: ${color.blueWhale};
+  color: ${color.blueWhale};
+  ${(props) => (props.active ? null : animation)}
+  background-color: currentColor;
   position: relative;
   transition: height 0.5s ease-out;
 `;
@@ -20,7 +41,7 @@ const FadeEffectBackground = styled.div`
   width: 100%;
   background: linear-gradient(
     rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.25) 60%,
     ${color.offWhite} 80%,
     ${color.offWhite}
   );
@@ -107,10 +128,12 @@ const ProgressBarContainer = styled.div`
 const ProgressBarContainerValue = styled.div`
   position: absolute;
   left: 0;
-  width: 82px;
+  width: ${(props) =>
+    props.voteAverageValue ? props.voteAverageValue : "0px"};
   height: 10px;
   background-color: ${color.ceruleanBlue};
   border-radius: 5px;
+  transition: width 0.5s ease-out;
 `;
 const FilmDescription = styled.p`
   font-size: 1.6rem;
@@ -193,7 +216,9 @@ export default function Home() {
             <FilmVoteAverageContainer>
               <FilmVoteAverage>{filmInformations.voteAverage}</FilmVoteAverage>
               <ProgressBarContainer>
-                <ProgressBarContainerValue />
+                <ProgressBarContainerValue
+                  voteAverageValue={`${filmInformations.voteAverage * 10}px`}
+                />
               </ProgressBarContainer>
             </FilmVoteAverageContainer>
             <FilmDescription>{filmInformations.description}</FilmDescription>
