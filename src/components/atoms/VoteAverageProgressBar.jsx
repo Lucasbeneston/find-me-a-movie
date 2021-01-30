@@ -19,7 +19,6 @@ const ProgressBarContainerValue = styled.div`
   height: 10px;
   background-color: ${color.ceruleanBlue};
   border-radius: 5px;
-  transition: width 0.5s ease-out;
 `;
 
 export default function VoteAverageProgressBar({ srcVoteAverage }) {

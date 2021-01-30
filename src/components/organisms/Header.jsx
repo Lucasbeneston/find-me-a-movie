@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import color from "../../styles/variables";
 
+// Styles
 const HeaderSection = styled.header`
   position: fixed;
   top: 0;
@@ -14,7 +15,6 @@ const HeaderSection = styled.header`
   color: ${color.offWhite};
   z-index: 150;
 `;
-
 const Title = styled.h1`
   text-transform: uppercase;
 `;

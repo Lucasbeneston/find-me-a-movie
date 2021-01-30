@@ -19,6 +19,13 @@ const Button = styled.button`
   outline: none;
   font-size: 1.4rem;
   text-transform: uppercase;
+  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out;
+
+  &:active {
+    background-color: ${color.ceruleanBlue};
+    transform: translate(-50%) scale(0.95);
+    transition: all 0.25s ease-in-out;
+  }
 `;
 
 export default function SearchButton({ onClickEvent, title }) {
