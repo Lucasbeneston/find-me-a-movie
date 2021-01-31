@@ -9,14 +9,14 @@ const Description = styled.p`
   margin: 15px 0;
 `;
 
-export default function MovieDescription({ srcDescription }) {
-  return <Description>{srcDescription}</Description>;
+export default function MovieDescription({ srcOverview }) {
+  return <Description>{srcOverview}</Description>;
 }
 
 // PropTypes
 MovieDescription.defaultProps = {
-  srcDescription: null,
+  srcOverview: null,
 };
 MovieDescription.propTypes = {
-  srcDescription: PropTypes.string,
+  srcOverview: PropTypes.string,
 };

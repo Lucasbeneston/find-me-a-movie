@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 
 // Components
@@ -14,48 +15,50 @@ const Section = styled.section`
 
 export default function Home() {
   const [startRandom, setStartRandom] = useState(false);
-  const [filmInformations, setFilmInformations] = useState({
-    posterPath:
-      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zDyT3gIeae39UgL9P6jL5Zc3zyt.jpg",
-    backdropPath:
-      "https://cdn-www.konbini.com/fr/images/files/2019/10/will-joker-be-coming-to-netflix-.jpg?webp=",
-    title: "Joker",
-    genres: ["Crime", "Thriller", "Drame"],
-    voteAverage: 8.2,
-    description:
-      "Dans les années 1980, à Gotham City, Arthur Fleck, un humoriste de stand-up raté, bascule dans la folie et devient le Joker.",
-  });
+  const [movieId, setMovieId] = useState(12);
 
-  const {
-    posterPath,
-    backdropPath,
-    title,
-    genres,
-    voteAverage,
-    description,
-  } = filmInformations;
-
-  // /!\ Temporary to cancel an eslint rule /!\
-  console.log(setFilmInformations);
+  const entierAleatoire = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
 
   const handleStart = () => {
+    setMovieId(entierAleatoire(1, 2000));
     if (!startRandom) setStartRandom(true);
   };
+
+  const fetchMovie = async () => {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`
+    );
+    return res.json();
+  };
+
+  const { data, status, refetch } = useQuery("movie", fetchMovie);
+
+  useEffect(() => {
+    refetch();
+  }, [movieId]);
+
+  useEffect(() => {
+    if (data && data.title === undefined) {
+      console.log("TITRE INTROUVABLE");
+      setMovieId(entierAleatoire(1, 2000));
+    }
+  }, [data]);
 
   return (
     <Section>
       <BackdropPathContainer
         startRandom={startRandom}
-        srcBackdropPath={backdropPath}
-        srcPosterPath={posterPath}
-        srcTitle={title}
+        srcBackdropPath={status === "success" && data.backdrop_path}
+        srcPosterPath={status === "success" && data.poster_path}
+        srcTitle={status === "success" && data.title}
       />
       <InformationsContainer
         startRandom={startRandom}
-        srcTitle={title}
-        srcGenresArray={genres}
-        srcVoteAverage={voteAverage}
-        srcDescription={description}
+        srcTitle={status === "success" && data.title}
+        srcGenresArray={status === "success" && data.genres}
+        srcVoteAverage={status === "success" && data.vote_average}
+        srcOverview={status === "success" && data.overview}
       />
       <SearchButton
         onClickEvent={handleStart}

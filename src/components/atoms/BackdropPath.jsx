@@ -20,7 +20,12 @@ const Image = styled.img`
 `;
 
 export default function BackdropPath({ srcBackdropPath, srcTitle }) {
-  return <Image src={srcBackdropPath} alt={`${srcTitle} movie illustration`} />;
+  return (
+    <Image
+      src={`https://image.tmdb.org/t/p/original/${srcBackdropPath}`}
+      alt={`${srcTitle} movie illustration`}
+    />
+  );
 }
 
 // PropTypes

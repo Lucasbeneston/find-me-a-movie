@@ -23,7 +23,7 @@ export default function MovieGenresContainer({ srcGenresArray }) {
   return (
     <Container>
       {srcGenresArray.map((genre) => (
-        <MovieGenre key={genre}>{genre}</MovieGenre>
+        <MovieGenre key={genre.name}>{genre.name}</MovieGenre>
       ))}
     </Container>
   );

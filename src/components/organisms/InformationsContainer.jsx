@@ -25,7 +25,7 @@ export default function InformationsContainer({
   srcTitle,
   srcGenresArray,
   srcVoteAverage,
-  srcDescription,
+  srcOverview,
 }) {
   return (
     <Container>
@@ -36,7 +36,7 @@ export default function InformationsContainer({
           <MovieTitle srcTitle={srcTitle} />
           <MovieGenresContainer srcGenresArray={srcGenresArray} />
           <MovieVoteAverageContainer srcVoteAverage={srcVoteAverage} />
-          <MovieDescription srcDescription={srcDescription} />
+          <MovieDescription srcOverview={srcOverview} />
         </>
       )}
     </Container>
@@ -49,12 +49,12 @@ InformationsContainer.defaultProps = {
   srcTitle: null,
   srcGenresArray: [],
   srcVoteAverage: 0,
-  srcDescription: null,
+  srcOverview: null,
 };
 InformationsContainer.propTypes = {
   startRandom: PropTypes.bool,
   srcTitle: PropTypes.string,
   srcGenresArray: PropTypes.arrayOf(PropTypes.string),
   srcVoteAverage: PropTypes.number,
-  srcDescription: PropTypes.string,
+  srcOverview: PropTypes.string,
 };

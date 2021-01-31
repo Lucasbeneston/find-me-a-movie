@@ -12,6 +12,7 @@ const FooterSection = styled.footer`
   justify-content: center;
   position: fixed;
   bottom: 0;
+  background-color: ${color.offWhite};
 `;
 const Copyright = styled.p`
   font-size: 1rem;

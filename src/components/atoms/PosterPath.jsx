@@ -22,7 +22,10 @@ const Image = styled.img`
 
 export default function PosterPath({ srcPosterPath, srcTitle }) {
   return (
-    <Image src={srcPosterPath} alt={`${srcTitle} movie poster illustration`} />
+    <Image
+      src={`https://image.tmdb.org/t/p/w500/${srcPosterPath}`}
+      alt={`${srcTitle} movie poster illustration`}
+    />
   );
 }
 
