@@ -22,7 +22,7 @@ const Image = styled.img`
 export default function BackdropPath({ srcBackdropPath, srcTitle }) {
   return (
     <Image
-      src={`https://image.tmdb.org/t/p/original/${srcBackdropPath}`}
+      src={`https://image.tmdb.org/t/p/w500/${srcBackdropPath}`}
       alt={`${srcTitle} movie illustration`}
     />
   );

@@ -21,25 +21,16 @@ export default function Home() {
   });
   const { page, selectInPage } = selectMovie;
 
-  // Random number between 2 values
   const entierAleatoire = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
-  const fetchMovie = async () => {
-    const res = await fetch(
+  const { data, status } = useQuery(["movie", page], () =>
+    fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=fr&page=${page}`
-    );
-    return res.json();
-  };
-
-  const { data, status, refetch } = useQuery("movie", fetchMovie);
+    ).then((res) => res.json())
+  );
 
   const handleStart = () => {
-    setSelectMovie({
-      page: entierAleatoire(1, 417),
-      selectInPage: entierAleatoire(0, 19),
-    });
-    refetch();
     if (!startRandom) setStartRandom(true);
   };
 
@@ -59,7 +50,7 @@ export default function Home() {
         startRandom={startRandom}
         srcTitle={status === "success" && data.results[selectInPage].title}
         srcGenresArray={
-          status === "success" && data.results[selectInPage].genres
+          status === "success" && data.results[selectInPage].genre_ids
         }
         srcVoteAverage={
           status === "success" && data.results[selectInPage].vote_average
@@ -69,7 +60,13 @@ export default function Home() {
         }
       />
       <SearchButton
-        onClickEvent={handleStart}
+        onClickEvent={() => {
+          handleStart();
+          setSelectMovie({
+            page: entierAleatoire(1, 417),
+            selectInPage: entierAleatoire(0, 19),
+          });
+        }}
         title={!startRandom ? "Commencer" : "Relancer"}
       />
     </Section>
