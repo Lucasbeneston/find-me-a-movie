@@ -6,6 +6,7 @@ import styled from "styled-components";
 import BackdropPathContainer from "../organisms/BackdropPathContainer";
 import InformationsContainer from "../organisms/InformationsContainer";
 import SearchButton from "../atoms/SearchButton";
+import LoadingBackdropPathContainer from "../organisms/LoadingBackdropPathContainer";
 
 // Styles
 const Section = styled.section`
@@ -24,7 +25,7 @@ export default function Home() {
   const entierAleatoire = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
-  const { data, status } = useQuery(["movie", page], () =>
+  const { data, isLoading } = useQuery(["movie", page], () =>
     fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=fr&page=${page}`
     ).then((res) => res.json())
@@ -36,29 +37,26 @@ export default function Home() {
 
   return (
     <Section>
-      <BackdropPathContainer
-        startRandom={startRandom}
-        srcBackdropPath={
-          status === "success" && data.results[selectInPage].backdrop_path
-        }
-        srcPosterPath={
-          status === "success" && data.results[selectInPage].poster_path
-        }
-        srcTitle={status === "success" && data.results[selectInPage].title}
-      />
-      <InformationsContainer
-        startRandom={startRandom}
-        srcTitle={status === "success" && data.results[selectInPage].title}
-        srcGenresArray={
-          status === "success" && data.results[selectInPage].genre_ids
-        }
-        srcVoteAverage={
-          status === "success" && data.results[selectInPage].vote_average
-        }
-        srcOverview={
-          status === "success" && data.results[selectInPage].overview
-        }
-      />
+      {isLoading ? (
+        <LoadingBackdropPathContainer />
+      ) : (
+        <>
+          <BackdropPathContainer
+            startRandom={startRandom}
+            srcBackdropPath={`https://image.tmdb.org/t/p/w500/${data.results[selectInPage].backdrop_path}`}
+            srcPosterPath={`https://image.tmdb.org/t/p/w300/${data.results[selectInPage].poster_path}`}
+            srcTitle={data.results[selectInPage].title}
+          />
+          <InformationsContainer
+            startRandom={startRandom}
+            srcTitle={data.results[selectInPage].title}
+            srcGenresArray={data.results[selectInPage].genre_ids}
+            srcVoteAverage={data.results[selectInPage].vote_average || 0}
+            srcOverview={data.results[selectInPage].overview}
+          />
+        </>
+      )}
+
       <SearchButton
         onClickEvent={() => {
           handleStart();

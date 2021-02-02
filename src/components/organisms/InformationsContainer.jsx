@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 
 // Components
@@ -10,6 +10,14 @@ import MovieVoteAverageContainer from "../molecules/MovieVoteAverageContainer";
 import MovieDescription from "../atoms/MovieDescription";
 
 // Style
+const fadeIn = keyframes`
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`;
 const Container = styled.div`
   width: 100%;
   min-height: calc(30vh - 30px); // 30px = Footer height
@@ -18,6 +26,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5px 10%;
+  animation: ${fadeIn} 0.5s ease-out;
+  padding-bottom: ${(props) => (props.active ? "100px" : "0")};
 `;
 
 export default function InformationsContainer({
@@ -28,7 +38,7 @@ export default function InformationsContainer({
   srcOverview,
 }) {
   return (
-    <Container>
+    <Container active={startRandom}>
       {!startRandom ? (
         <TitleBeforeRandom />
       ) : (

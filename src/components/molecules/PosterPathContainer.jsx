@@ -20,6 +20,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   transition: all 0.5s ease-out;
+  z-index: 150;
 `;
 
 export default function PosterPathContainer({

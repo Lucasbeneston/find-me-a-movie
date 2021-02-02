@@ -62,5 +62,5 @@ MovieGenresContainer.defaultProps = {
   srcGenresArray: [],
 };
 MovieGenresContainer.propTypes = {
-  srcGenresArray: PropTypes.arrayOf(PropTypes.string),
+  srcGenresArray: PropTypes.arrayOf(PropTypes.number),
 };
