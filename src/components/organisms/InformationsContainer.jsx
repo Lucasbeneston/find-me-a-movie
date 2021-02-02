@@ -28,11 +28,13 @@ const Container = styled.div`
   padding: 5px 10%;
   animation: ${fadeIn} 0.5s ease-out;
   padding-bottom: ${(props) => (props.active ? "100px" : "0")};
+  z-index: 151;
 `;
 
 export default function InformationsContainer({
   startRandom,
   srcTitle,
+  srcReleaseDate,
   srcGenresArray,
   srcVoteAverage,
   srcOverview,
@@ -43,7 +45,7 @@ export default function InformationsContainer({
         <TitleBeforeRandom />
       ) : (
         <>
-          <MovieTitle srcTitle={srcTitle} />
+          <MovieTitle srcTitle={srcTitle} srcReleaseDate={srcReleaseDate} />
           <MovieGenresContainer srcGenresArray={srcGenresArray} />
           <MovieVoteAverageContainer srcVoteAverage={srcVoteAverage} />
           <MovieDescription srcOverview={srcOverview} />
@@ -57,6 +59,7 @@ export default function InformationsContainer({
 InformationsContainer.defaultProps = {
   startRandom: null,
   srcTitle: null,
+  srcReleaseDate: null,
   srcGenresArray: [],
   srcVoteAverage: 0,
   srcOverview: null,
@@ -64,6 +67,7 @@ InformationsContainer.defaultProps = {
 InformationsContainer.propTypes = {
   startRandom: PropTypes.bool,
   srcTitle: PropTypes.string,
+  srcReleaseDate: PropTypes.string,
   srcGenresArray: PropTypes.arrayOf(PropTypes.number),
   srcVoteAverage: PropTypes.number,
   srcOverview: PropTypes.string,

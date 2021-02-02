@@ -20,6 +20,7 @@ const Button = styled.button`
   font-size: 1.4rem;
   text-transform: uppercase;
   transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out;
+  z-index: 200;
 
   &:active {
     background-color: ${color.ceruleanBlue};

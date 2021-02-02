@@ -39,6 +39,8 @@ export default function Home() {
     ).then((res) => res.json())
   );
 
+  console.log(data);
+
   return (
     <Section>
       {isLoading && count > 1 ? (
@@ -60,6 +62,7 @@ export default function Home() {
           <InformationsContainer
             startRandom={startRandom}
             srcTitle={data && data.results[selectInPage].title}
+            srcReleaseDate={data && data.results[selectInPage].release_date}
             srcGenresArray={data && data.results[selectInPage].genre_ids}
             srcVoteAverage={data && data.results[selectInPage].vote_average}
             srcOverview={data && data.results[selectInPage].overview}
