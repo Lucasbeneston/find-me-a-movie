@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
@@ -16,10 +17,17 @@ const Section = styled.section`
 
 export default function Home() {
   const [startRandom, setStartRandom] = useState(false);
+  const [count, setCount] = useState(0);
   const [selectMovie, setSelectMovie] = useState({
     page: 1,
     selectInPage: 0,
   });
+
+  const handleStart = () => {
+    if (!startRandom) setStartRandom(true);
+    if (count < 2) setCount(count + 1);
+  };
+
   const { page, selectInPage } = selectMovie;
 
   const entierAleatoire = (min, max) =>
@@ -31,28 +39,32 @@ export default function Home() {
     ).then((res) => res.json())
   );
 
-  const handleStart = () => {
-    if (!startRandom) setStartRandom(true);
-  };
-
   return (
     <Section>
-      {isLoading ? (
+      {isLoading && count > 1 ? (
         <LoadingBackdropPathContainer />
       ) : (
         <>
           <BackdropPathContainer
             startRandom={startRandom}
-            srcBackdropPath={`https://image.tmdb.org/t/p/w500/${data.results[selectInPage].backdrop_path}`}
-            srcPosterPath={`https://image.tmdb.org/t/p/w300/${data.results[selectInPage].poster_path}`}
-            srcTitle={data.results[selectInPage].title}
+            srcBackdropPath={
+              data &&
+              `https://image.tmdb.org/t/p/w500/${data.results[selectInPage].backdrop_path}`
+            }
+            srcPosterPath={
+              data &&
+              `https://image.tmdb.org/t/p/w300/${data.results[selectInPage].poster_path}`
+            }
+            srcTitle={data && data.results[selectInPage].title}
           />
           <InformationsContainer
             startRandom={startRandom}
-            srcTitle={data.results[selectInPage].title}
-            srcGenresArray={data.results[selectInPage].genre_ids}
-            srcVoteAverage={data.results[selectInPage].vote_average || 0}
-            srcOverview={data.results[selectInPage].overview}
+            srcTitle={data && data.results[selectInPage].title}
+            srcGenresArray={data && data.results[selectInPage].genre_ids}
+            srcVoteAverage={
+              (data && data.results[selectInPage].vote_average) || 0
+            }
+            srcOverview={data && data.results[selectInPage].overview}
           />
         </>
       )}
