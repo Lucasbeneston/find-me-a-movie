@@ -64,7 +64,7 @@ InformationsContainer.defaultProps = {
 InformationsContainer.propTypes = {
   startRandom: PropTypes.bool,
   srcTitle: PropTypes.string,
-  srcGenresArray: PropTypes.arrayOf(PropTypes.string),
+  srcGenresArray: PropTypes.arrayOf(PropTypes.number),
   srcVoteAverage: PropTypes.number,
   srcOverview: PropTypes.string,
 };

@@ -61,9 +61,7 @@ export default function Home() {
             startRandom={startRandom}
             srcTitle={data && data.results[selectInPage].title}
             srcGenresArray={data && data.results[selectInPage].genre_ids}
-            srcVoteAverage={
-              (data && data.results[selectInPage].vote_average) || 0
-            }
+            srcVoteAverage={data && data.results[selectInPage].vote_average}
             srcOverview={data && data.results[selectInPage].overview}
           />
         </>
