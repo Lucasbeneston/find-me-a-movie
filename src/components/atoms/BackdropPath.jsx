@@ -20,7 +20,6 @@ const Image = styled.img`
   object-fit: cover;
 
   @media ${device.portraitBrowserPage} {
-    background-color: red;
     width: 100%;
   }
 `;

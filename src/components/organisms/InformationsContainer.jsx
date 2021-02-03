@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
+import device from "../../styles/breakpoints";
 
 // Components
 import TitleBeforeRandom from "../atoms/TitleBeforeRandom";
@@ -29,10 +30,20 @@ const Container = styled.div`
   animation: ${fadeIn} 0.5s ease-out;
   padding-bottom: ${(props) => (props.active ? "100px" : "0")};
   z-index: 151;
+
+  @media ${device.portraitBrowserPage} {
+    padding: 5px 15%;
+    padding-bottom: ${(props) => (props.active ? "100px" : "0")};
+  }
+  @media ${device.desktop} {
+    padding: 5px 25%;
+    padding-bottom: ${(props) => (props.active ? "100px" : "0")};
+  }
 `;
 
 export default function InformationsContainer({
   startRandom,
+  srcTotalResults,
   srcTitle,
   srcReleaseDate,
   srcGenresArray,
@@ -42,7 +53,7 @@ export default function InformationsContainer({
   return (
     <Container active={startRandom}>
       {!startRandom ? (
-        <TitleBeforeRandom />
+        <TitleBeforeRandom srcTotalResults={srcTotalResults} />
       ) : (
         <>
           <MovieTitle srcTitle={srcTitle} srcReleaseDate={srcReleaseDate} />
@@ -58,6 +69,7 @@ export default function InformationsContainer({
 // PropTypes
 InformationsContainer.defaultProps = {
   startRandom: null,
+  srcTotalResults: 8000,
   srcTitle: null,
   srcReleaseDate: null,
   srcGenresArray: [],
@@ -66,6 +78,7 @@ InformationsContainer.defaultProps = {
 };
 InformationsContainer.propTypes = {
   startRandom: PropTypes.bool,
+  srcTotalResults: PropTypes.number,
   srcTitle: PropTypes.string,
   srcReleaseDate: PropTypes.string,
   srcGenresArray: PropTypes.arrayOf(PropTypes.number),

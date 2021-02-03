@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Heart from "../atoms/SVGR/Heart";
+import Heart from "../atoms/Illustrations/Heart";
 import color from "../../styles/variables";
 
 // Styles

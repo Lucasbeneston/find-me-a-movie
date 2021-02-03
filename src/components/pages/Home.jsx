@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
@@ -39,8 +38,6 @@ export default function Home() {
     ).then((res) => res.json())
   );
 
-  console.log(data);
-
   return (
     <Section>
       {isLoading && count > 1 ? (
@@ -61,6 +58,7 @@ export default function Home() {
           />
           <InformationsContainer
             startRandom={startRandom}
+            srcTotalResults={data && data.total_results}
             srcTitle={data && data.results[selectInPage].title}
             srcReleaseDate={data && data.results[selectInPage].release_date}
             srcGenresArray={data && data.results[selectInPage].genre_ids}
@@ -71,6 +69,7 @@ export default function Home() {
       )}
 
       <SearchButton
+        startRandom={startRandom}
         onClickEvent={() => {
           handleStart();
           setSelectMovie({
