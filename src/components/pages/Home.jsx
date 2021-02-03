@@ -51,7 +51,7 @@ export default function Home() {
             startRandom={startRandom}
             srcBackdropPath={
               data &&
-              `https://image.tmdb.org/t/p/w500/${data.results[selectInPage].backdrop_path}`
+              `https://image.tmdb.org/t/p/original/${data.results[selectInPage].backdrop_path}`
             }
             srcPosterPath={
               data &&

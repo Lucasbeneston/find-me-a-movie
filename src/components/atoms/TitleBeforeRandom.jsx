@@ -15,9 +15,10 @@ const Span = styled.span`
 export default function TitleBeforeRandom() {
   return (
     <IntroductionTitle>
-      <Span>Find me a movie</Span> est le moyen le plus simple de{" "}
-      <Span>trouver un film lorsque vous n'avez aucune idée</Span> de ce que
-      vous voulez regarder.
+      Vous n'avez aucune idée de film à regarder ? Pas de problème !{" "}
+      <Span>Find me a movie</Span> vous permet de trouver un film{" "}
+      <Span>de manière aléatoire</Span> parmis une liste de{" "}
+      <Span>8329 films</Span> les mieux notés !
     </IntroductionTitle>
   );
 }

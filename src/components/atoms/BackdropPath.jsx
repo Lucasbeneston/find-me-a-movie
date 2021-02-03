@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
+import device from "../../styles/breakpoints";
 
 // Style
 
@@ -17,6 +18,11 @@ const Image = styled.img`
   animation: ${fadeIn} 0.5s ease-out;
   height: 100%;
   object-fit: cover;
+
+  @media ${device.portraitBrowserPage} {
+    background-color: red;
+    width: 100%;
+  }
 `;
 
 export default function BackdropPath({ srcBackdropPath, srcTitle }) {

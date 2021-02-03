@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import color from "../../styles/variables";
+import device from "../../styles/breakpoints";
 
 // Components
 import FadeEffectBackground from "../atoms/FadeEffectBackground";
@@ -25,6 +26,21 @@ const PosterPathContainer = styled.div`
   border-radius: 25px;
   display: flex;
   justify-content: center;
+
+  @media ${device.portraitBrowserPage} {
+    width: 25vw;
+    height: 37.5vw;
+  }
+
+  @media ${device.tablet} {
+    width: 19vw;
+    height: 27.5vw;
+  }
+
+  @media ${device.laptop} {
+    width: 12.5vw;
+    height: 17.5vw;
+  }
 `;
 export default function LoadingBackdropPathContainer() {
   return (
