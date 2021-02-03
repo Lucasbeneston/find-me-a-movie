@@ -20,7 +20,13 @@ const Image = styled.img`
 `;
 
 export default function BackdropPath({ srcBackdropPath, srcTitle }) {
-  return <Image src={srcBackdropPath} alt={`${srcTitle} movie illustration`} />;
+  return (
+    <>
+      {srcBackdropPath ? (
+        <Image src={srcBackdropPath} alt={`${srcTitle} movie illustration`} />
+      ) : null}
+    </>
+  );
 }
 
 // PropTypes

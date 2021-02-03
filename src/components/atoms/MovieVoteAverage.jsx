@@ -13,7 +13,7 @@ export default function MovieVoteAverage({ srcVoteAverage }) {
 
 // PropTypes
 MovieVoteAverage.defaultProps = {
-  srcVoteAverage: 0,
+  srcVoteAverage: null,
 };
 MovieVoteAverage.propTypes = {
   srcVoteAverage: PropTypes.number,

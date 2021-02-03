@@ -21,7 +21,11 @@ const Image = styled.img`
 `;
 
 export default function PosterPath({ srcPosterPath, srcTitle }) {
-  return <Image src={srcPosterPath} alt={`${srcTitle}`} />;
+  return (
+    <>
+      {srcPosterPath ? <Image src={srcPosterPath} alt={`${srcTitle}`} /> : null}
+    </>
+  );
 }
 
 // PropTypes

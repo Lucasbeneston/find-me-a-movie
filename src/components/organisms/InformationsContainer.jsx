@@ -61,7 +61,7 @@ InformationsContainer.defaultProps = {
   srcTitle: null,
   srcReleaseDate: null,
   srcGenresArray: [],
-  srcVoteAverage: 0,
+  srcVoteAverage: null,
   srcOverview: null,
 };
 InformationsContainer.propTypes = {

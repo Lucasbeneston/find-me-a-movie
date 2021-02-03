@@ -19,7 +19,10 @@ export default function MovieTitle({ srcTitle, srcReleaseDate }) {
   return (
     <Title>
       {srcTitle}
-      <Date> ({moment(srcReleaseDate).format("YYYY")})</Date>
+      <Date>
+        {" "}
+        {srcReleaseDate && `(${moment(srcReleaseDate).format("YYYY")})`}
+      </Date>
     </Title>
   );
 }

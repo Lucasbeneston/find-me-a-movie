@@ -23,17 +23,21 @@ const ProgressBarContainerValue = styled.div`
 
 export default function VoteAverageProgressBar({ srcVoteAverage }) {
   return (
-    <ProgressBarContainer>
-      <ProgressBarContainerValue
-        voteAverageValue={`${srcVoteAverage * 10}px`}
-      />
-    </ProgressBarContainer>
+    <>
+      {srcVoteAverage ? (
+        <ProgressBarContainer>
+          <ProgressBarContainerValue
+            voteAverageValue={`${srcVoteAverage * 10}px`}
+          />
+        </ProgressBarContainer>
+      ) : null}
+    </>
   );
 }
 
 // PropTypes
 VoteAverageProgressBar.defaultProps = {
-  srcVoteAverage: 0,
+  srcVoteAverage: null,
 };
 VoteAverageProgressBar.propTypes = {
   srcVoteAverage: PropTypes.number,
