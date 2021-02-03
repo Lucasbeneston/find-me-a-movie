@@ -73,7 +73,7 @@ export default function Home() {
         onClickEvent={() => {
           handleStart();
           setSelectMovie({
-            page: entierAleatoire(1, 417),
+            page: entierAleatoire(1, data.total_pages),
             selectInPage: entierAleatoire(0, 19),
           });
         }}
