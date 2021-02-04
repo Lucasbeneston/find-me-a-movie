@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Projet "Find Me A Movie !"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Lien du projet : [https://find-me-a-movie.herokuapp.com/](https://find-me-a-movie.herokuapp.com/)
 
-## Available Scripts
+Lien du repertoire : [https://github.com/Lucasbeneston/find-me-a-movie](https://github.com/Lucasbeneston/find-me-a-movie)
 
-In the project directory, you can run:
+## Informations générales
 
-### `npm start`
+Est-ce que comme moi, parfois il vous arrive de galérer à trouver un film à regarder sur les différentes plateformes de streaming ? Pour résoudre ce problème, j’ai eu l’idée de créer un site qui sélectionne de manière aléatoire des films parmi une liste de plus de 8000 films les mieux notés (depuis l'API TMDb) !
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Réalisations
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Liste des réalisations :
 
-### `npm test`
+- **Maquettage** mobile et desktop.
+- **Intégration** « Mobile first ».
+- **Responsive** tablet, laptop et desktop.
+- **Recherche aléatoire** d’un film depuis l’API #TMDb.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+Liste (non exhaustive) des technologies et packages utilisés :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [React](https://www.npmjs.com/package/react) : v 17.0.1
+- [Node](https://nodejs.org/en/) : v 14.15.1
+- [Styled-components](https://styled-components.com/) : v 5.2.1
+- [ESLint](https://www.npmjs.com/package/eslint) : v 7.15.0
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) : v 5.2.0
+- [prop-types](https://www.npmjs.com/package/prop-types) : v 15.7.2
+- [Husky](https://www.npmjs.com/package/husky) : v 4.3.4
+- [react-query](https://react-query.tanstack.com/) : v 3.6.0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Démarrer le projet
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Dans un terminal, exécuter ces lignes :
 
-### `npm run eject`
+`$ git clone https://github.com/Lucasbeneston/find-me-a-movie`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`$ cd ../path/to/the/file`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`$ npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`$ npm start`
